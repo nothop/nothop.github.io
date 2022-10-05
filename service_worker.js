@@ -10,6 +10,7 @@ self.addEventListener("install", (e) => {
           "./icon.svg",
           "./icon_maskable.svg",
           "./icon_apple.png",
+          "./index.css",
           "./index.js",
           "./service_worker.js",
         ])

@@ -1,0 +1,30 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  display: flex;
+}
+
+main {
+  margin: auto;
+  padding: 2rem;
+  font-family: sans-serif;
+}
+
+h1,
+p {
+  margin: 0.667rem 0;
+}
+
+h1 {
+  font-size: 1.5rem;
+  font-weight: normal;
+}
+
+a {
+  color: #3b82f6;
+  text-decoration: underline;
+}

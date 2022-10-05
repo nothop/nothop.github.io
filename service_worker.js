@@ -1,23 +1,34 @@
 self.addEventListener("install", (e) => {
+  // console.log("installing");
   e.waitUntil(
-    caches
-      .open("v1")
-      .then((cache) =>
-        cache.addAll([
-          ".",
-          "./index.html",
-          "./app.webmanifest",
-          "./icon.svg",
-          "./icon_maskable.svg",
-          "./icon_apple.png",
-          "./index.css",
-          "./index.js",
-          "./service_worker.js",
-        ])
-      )
+    (async () => {
+      const cache = await caches.open("v1");
+      await cache.addAll([
+        ".",
+        "./index.html",
+        "./app.webmanifest",
+        "./icon.svg",
+        "./icon_maskable.svg",
+        "./icon_apple.png",
+        "./index.css",
+        "./index.js",
+      ]);
+    })()
   );
 });
 
 self.addEventListener("fetch", (e) => {
-  caches.match(e.request).then((response) => response || fetch(e.request));
+  e.respondWith(
+    (async () => {
+      const cached = await caches.match(e.request);
+
+      if (cached) {
+        // console.log(`${e.request.url}: returning from cache`);
+        return cached;
+      } else {
+        // console.log(`${e.request.url}: not cached, fetching`);
+        return fetch(e.request);
+      }
+    })()
+  );
 });

@@ -2,7 +2,7 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service_worker.js");
 }
 
-const audio = new Audio("./hash.wav");
+const audio = new Audio("./message.wav");
 
 let secretStep = 0;
 
@@ -32,7 +32,7 @@ document.addEventListener("pointerdown", (event) => {
     // prettier-ignore
     audio.addEventListener(
       "ended",
-      () => window.location.href = "https://www.facebook.com/Reformschule.Kassel",
+      () => window.location.href = "https://youtu.be/1grLXRfy2j8",
       { once: true }
     );
     audio.play();

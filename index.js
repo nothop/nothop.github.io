@@ -4,39 +4,24 @@ if ("serviceWorker" in navigator) {
 
 const audio = new Audio("./message.wav");
 
-let secretStep = 0;
-
-const rightStepTaken = (event) => {
-  if (
-    (secretStep === 0 || secretStep === 3) &&
-    event.clientX < window.innerWidth / 2
-  )
-    return true;
-  if (
-    (secretStep === 1 || secretStep === 2 || secretStep === 4) &&
-    event.clientX > window.innerWidth / 2
-  )
-    return true;
-
-  return false;
-};
+const correctSteps = Object.freeze(["left", "right", "right", "left", "right"]);
+const lastSteps = [];
 
 document.addEventListener("pointerdown", (event) => {
-  if (rightStepTaken(event)) {
-    secretStep++;
-  } else {
-    secretStep = 0;
+  if (event.clientX < window.innerWidth / 2) lastSteps.push("left");
+  if (event.clientX > window.innerWidth / 2) lastSteps.push("right");
+  if (lastSteps.length > correctSteps.length) lastSteps.shift();
+
+  for (let i = 0; i < correctSteps.length; i++) {
+    if (lastSteps[i] !== correctSteps[i]) {
+      return;
+    }
   }
 
-  if (secretStep === 5) {
-    // prettier-ignore
-    audio.addEventListener(
-      "ended",
-      () => window.location.href = "https://youtu.be/1grLXRfy2j8",
-      { once: true }
-    );
-    audio.play();
-
-    secretStep = 0;
-  }
+  audio.addEventListener(
+    "ended",
+    () => (window.location.href = "https://youtu.be/1grLXRfy2j8"),
+    { once: true }
+  );
+  audio.play();
 });

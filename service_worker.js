@@ -14,6 +14,10 @@ self.addEventListener("install", (e) => {
         "./index.css",
         "./index.js",
         "./never.flac",
+        "./cashewkerne.jpg",
+        "./cashewkern_intro.wav",
+        "./cashewkern_yes.wav",
+        "./cashewkern_no.wav",
       ]);
     })()
   );

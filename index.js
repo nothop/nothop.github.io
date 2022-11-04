@@ -4,11 +4,21 @@ if ("serviceWorker" in navigator) {
 
 const viewInnocuous = document.getElementById("view-innocuous");
 const viewSecret = document.getElementById("view-secret");
+const viewCashewkern1 = document.getElementById("view-cashewkern-1");
+const viewCashewkern2 = document.getElementById("view-cashewkern-2");
 
 let activeView = viewInnocuous;
 const changeView = (target) => {
   activeView.style.display = "none";
-  target.style.display = "block";
+  if (target !== viewCashewkern2) {
+    target.style.display = "block";
+    document.documentElement.style.backgroundImage = "";
+    document.documentElement.style.backgroundSize = "";
+  } else {
+    target.style.display = "flex";
+    document.documentElement.style.backgroundImage = 'url("./cashewkerne.jpg")';
+    document.documentElement.style.backgroundSize = "cover";
+  }
   activeView = target;
 };
 
@@ -49,4 +59,57 @@ document.addEventListener("pointerdown", (event) => {
   secretAudio.play();
   progressIsBeingUpdated = true;
   updateProgress();
+});
+
+const cashewkernTrigger = document.getElementById("cashewkern-trigger");
+const cashewkernYes = document.getElementById("cashewkern-yes");
+const cashewkernNo = document.getElementById("cashewkern-no");
+
+const cashewkernIntroAudio = new Audio("./cashewkern_intro.wav");
+const cashewkernYesAudio = new Audio("./cashewkern_yes.wav");
+const cashewkernNoAudio = new Audio("./cashewkern_no.wav");
+
+cashewkernTrigger.addEventListener("click", () => {
+  if (activeView !== viewInnocuous) return;
+  changeView(viewCashewkern1);
+
+  cashewkernIntroAudio.addEventListener(
+    "ended",
+    () => {
+      if (activeView !== viewCashewkern1) return;
+      changeView(viewCashewkern2);
+    },
+    { once: true }
+  );
+  cashewkernIntroAudio.play();
+});
+
+cashewkernYes.addEventListener("click", () => {
+  if (activeView !== viewCashewkern2) return;
+  changeView(viewCashewkern1);
+
+  cashewkernYesAudio.addEventListener(
+    "ended",
+    () => {
+      if (activeView !== viewCashewkern1) return;
+      changeView(viewInnocuous);
+    },
+    { once: true }
+  );
+  cashewkernYesAudio.play();
+});
+
+cashewkernNo.addEventListener("click", () => {
+  if (activeView !== viewCashewkern2) return;
+  changeView(viewCashewkern1);
+
+  cashewkernNoAudio.addEventListener(
+    "ended",
+    () => {
+      if (activeView !== viewCashewkern1) return;
+      changeView(viewCashewkern2);
+    },
+    { once: true }
+  );
+  cashewkernNoAudio.play();
 });

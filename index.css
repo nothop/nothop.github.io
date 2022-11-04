@@ -31,11 +31,25 @@ a {
 }
 
 #view-secret {
-  display: none;
   min-width: 0;
 }
 
 #secret-progress {
   width: 20rem;
   max-width: 100%;
+}
+
+#view-cashewkern-2 {
+  /* applied by JavaScript */
+  /* display: flex; */
+  gap: 1rem;
+}
+
+#cashewkern-yes,
+#cashewkern-no {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }

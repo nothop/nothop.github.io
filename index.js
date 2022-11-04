@@ -2,12 +2,31 @@ if ("serviceWorker" in navigator) {
   navigator.serviceWorker.register("./service_worker.js");
 }
 
-const audio = new Audio("./message.wav");
+const viewInnocuous = document.getElementById("view-innocuous");
+const viewSecret = document.getElementById("view-secret");
+
+let activeView = viewInnocuous;
+const changeView = (target) => {
+  activeView.style.display = "none";
+  target.style.display = "block";
+  activeView = target;
+};
 
 const correctSteps = Object.freeze(["left", "right", "right", "left", "right"]);
 const lastSteps = [];
 
+const secretAudio = new Audio("./never.flac");
+const secretProgress = document.getElementById("secret-progress");
+
+let progressIsBeingUpdated = false;
+const updateProgress = () => {
+  secretProgress.value = secretAudio.currentTime / secretAudio.duration;
+  if (progressIsBeingUpdated) requestAnimationFrame(updateProgress);
+};
+
 document.addEventListener("pointerdown", (event) => {
+  if (activeView !== viewInnocuous) return;
+
   if (event.clientX < window.innerWidth / 2) lastSteps.push("left");
   if (event.clientX > window.innerWidth / 2) lastSteps.push("right");
   if (lastSteps.length > correctSteps.length) lastSteps.shift();
@@ -18,10 +37,16 @@ document.addEventListener("pointerdown", (event) => {
     }
   }
 
-  audio.addEventListener(
+  changeView(viewSecret);
+  secretAudio.addEventListener(
     "ended",
-    () => (window.location.href = "https://youtu.be/1grLXRfy2j8"),
+    () => {
+      progressIsBeingUpdated = false;
+      changeView(viewInnocuous);
+    },
     { once: true }
   );
-  audio.play();
+  secretAudio.play();
+  progressIsBeingUpdated = true;
+  updateProgress();
 });

@@ -29,3 +29,13 @@ a {
   color: #3b82f6;
   text-decoration: underline;
 }
+
+#view-secret {
+  display: none;
+  min-width: 0;
+}
+
+#secret-progress {
+  width: 20rem;
+  max-width: 100%;
+}

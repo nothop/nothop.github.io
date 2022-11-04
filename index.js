@@ -16,7 +16,8 @@ const changeView = (target) => {
     document.documentElement.style.backgroundSize = "";
   } else {
     target.style.display = "flex";
-    document.documentElement.style.backgroundImage = 'url("./cashewkerne.jpg")';
+    document.documentElement.style.backgroundImage =
+      'url("./assets/cashewkerne.jpg")';
     document.documentElement.style.backgroundSize = "cover";
   }
   activeView = target;
@@ -25,7 +26,7 @@ const changeView = (target) => {
 const correctSteps = Object.freeze(["left", "right", "right", "left", "right"]);
 const lastSteps = [];
 
-const secretAudio = new Audio("./never.flac");
+const secretAudio = new Audio("./assets/never.flac");
 const secretProgress = document.getElementById("secret-progress");
 
 let progressIsBeingUpdated = false;
@@ -65,9 +66,9 @@ const cashewkernTrigger = document.getElementById("cashewkern-trigger");
 const cashewkernYes = document.getElementById("cashewkern-yes");
 const cashewkernNo = document.getElementById("cashewkern-no");
 
-const cashewkernIntroAudio = new Audio("./cashewkern_intro.wav");
-const cashewkernYesAudio = new Audio("./cashewkern_yes.wav");
-const cashewkernNoAudio = new Audio("./cashewkern_no.wav");
+const cashewkernIntroAudio = new Audio("./assets/cashewkern_intro.wav");
+const cashewkernYesAudio = new Audio("./assets/cashewkern_yes.wav");
+const cashewkernNoAudio = new Audio("./assets/cashewkern_no.wav");
 
 cashewkernTrigger.addEventListener("click", () => {
   if (activeView !== viewInnocuous) return;

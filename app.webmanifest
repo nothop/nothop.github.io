@@ -3,11 +3,11 @@
   "name": "Photon",
   "icons": [
     {
-      "src": "./icon.svg",
+      "src": "./assets/icon/icon.svg",
       "sizes": "any"
     },
     {
-      "src": "./icon_maskable.svg",
+      "src": "./assets/icon/icon_maskable.svg",
       "sizes": "any",
       "purpose": "maskable"
     }

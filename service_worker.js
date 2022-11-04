@@ -6,12 +6,14 @@ self.addEventListener("install", (e) => {
       await cache.addAll([
         ".",
         "./index.html",
+        "./icon.png",
+        "./icon_maskable.png",
         "./app.webmanifest",
         "./icon.svg",
         "./icon_maskable.svg",
-        "./icon_apple.png",
         "./index.css",
         "./index.js",
+        "./never.flac",
       ]);
     })()
   );
@@ -21,7 +23,6 @@ self.addEventListener("fetch", (e) => {
   e.respondWith(
     (async () => {
       const cached = await caches.match(e.request);
-
       if (cached) {
         // console.log(`${e.request.url}: returning from cache`);
         return cached;

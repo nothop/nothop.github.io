@@ -2,6 +2,12 @@
 
 eSpeak NG 1.50
 
+## cashewkerne.jpg
+
+https://pixabay.com/photos/nuts-food-cashew-nuts-3841542/
+
+Mit Exiftool Metadaten entfernt.
+
 ## cashewkern_intro.wav
 
 ```

@@ -13,17 +13,30 @@ Mit Exiftool Metadaten entfernt.
 ```
 espeak-ng -v German 'Sind Sie ein Cashewkern?'
 ```
+
 Mit Audacity: "Cashew" durch "Cashew" aus
+
 ```
 espeak-ng 'Cashew'
 ```
+
 und "kern" durch "Kern" aus
+
 ```
 espeak-ng -v German 'Sind Sie ein Kern?'
 ```
+
 ersetzt.
 
 ## cashewkern_yes.wav
+
+Ursprünglich:
+
+```
+espeak-ng -v German 'Danke für Ihre Ehrlichkeit.'
+```
+
+Gegenwärtig:
 
 ```
 espeak-ng -v German -s 150 'Danke für Ihre Err lich keit.'

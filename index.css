@@ -39,10 +39,25 @@ a {
   max-width: 100%;
 }
 
+#secret-credits {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+}
+
+#secret-credits-inner {
+  margin: 0 auto;
+  padding: 2rem;
+}
+
 #view-cashewkern-2 {
   /* applied by JavaScript */
   /* display: flex; */
   gap: 1rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 #cashewkern-yes,

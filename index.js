@@ -122,7 +122,7 @@ const registerExternalSite = (trigger, view, iframe, back, url) => {
   trigger.addEventListener("click", () => {
     if (activeView !== viewInnocuous) return;
     changeView(view);
-    iframe.src = url;
+    iframe.src = url();
   });
 
   back.addEventListener("click", () => {
@@ -143,7 +143,8 @@ registerExternalSite(
   viewVertretungsplan,
   vertretungsplanIframe,
   vertretungsplanBack,
-  "https://kephiso.webuntis.com/WebUntis/monitor?school=reformschule-kassel&monitorType=subst&format=Vertretung"
+  () =>
+    "https://kephiso.webuntis.com/WebUntis/monitor?school=reformschule-kassel&monitorType=subst&format=Vertretung"
 );
 
 const speiseplanTrigger = document.getElementById("speiseplan-trigger");
@@ -166,7 +167,8 @@ registerExternalSite(
   viewSpeiseplan,
   speiseplanIframe,
   speiseplanBack,
-  `https://www.biond.de/sp/reformschule/Reformschule,%20${isoWeekOfYear(
-    new Date()
-  )}.%20KW.pdf`
+  () =>
+    `https://www.biond.de/sp/reformschule/Reformschule,%20${isoWeekOfYear(
+      new Date()
+    )}.%20KW.pdf`
 );

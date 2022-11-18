@@ -1,4 +1,4 @@
-// 1
+// 2
 // This isn't byte-equal.
 
 self.addEventListener("install", (e) => {

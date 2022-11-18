@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 html,
 body {
   height: 100%;
@@ -25,9 +29,25 @@ h1 {
   font-weight: normal;
 }
 
-a {
+.link {
+  border: none;
+  background-color: transparent;
+  padding: 0;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+
   color: #3b82f6;
   text-decoration: underline;
+  cursor: pointer;
+}
+
+.button {
+  display: block;
+  padding: 0.5rem 1rem;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
 #view-secret {
@@ -60,11 +80,29 @@ a {
   justify-content: center;
 }
 
-#cashewkern-yes,
-#cashewkern-no {
+#view-vertretungsplan,
+#view-speiseplan {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+}
+
+#vertretungsplan-iframe,
+#speiseplan-iframe {
   display: block;
-  padding: 0.5rem 1rem;
-  font-family: inherit;
-  font-size: inherit;
-  font-weight: inherit;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+#vertretungsplan-iframe {
+  border: 3px solid black; /* matches the border in the middle of the iframe */
+}
+
+#vertretungsplan-back,
+#speiseplan-back {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  z-index: 10;
 }

@@ -6,6 +6,8 @@ const viewInnocuous = document.getElementById("view-innocuous");
 const viewSecret = document.getElementById("view-secret");
 const viewCashewkern1 = document.getElementById("view-cashewkern-1");
 const viewCashewkern2 = document.getElementById("view-cashewkern-2");
+const viewVertretungsplan = document.getElementById("view-vertretungsplan");
+const viewSpeiseplan = document.getElementById("view-speiseplan");
 
 let activeView = viewInnocuous;
 const changeView = (target) => {
@@ -48,10 +50,10 @@ document.addEventListener("pointerdown", (event) => {
     }
   }
 
-  changeView(viewSecret);
   secretAudio.addEventListener(
     "ended",
     () => {
+      if (activeView !== viewSecret) return;
       progressIsBeingUpdated = false;
       changeView(viewInnocuous);
     },
@@ -60,6 +62,7 @@ document.addEventListener("pointerdown", (event) => {
   secretAudio.play();
   progressIsBeingUpdated = true;
   updateProgress();
+  changeView(viewSecret);
 });
 
 const cashewkernTrigger = document.getElementById("cashewkern-trigger");
@@ -114,3 +117,56 @@ cashewkernNo.addEventListener("click", () => {
   );
   cashewkernNoAudio.play();
 });
+
+const registerExternalSite = (trigger, view, iframe, back, url) => {
+  trigger.addEventListener("click", () => {
+    if (activeView !== viewInnocuous) return;
+    changeView(view);
+    iframe.src = url;
+  });
+
+  back.addEventListener("click", () => {
+    if (activeView !== view) return;
+    changeView(viewInnocuous);
+    iframe.src = "";
+  });
+};
+
+const vertretungsplanTrigger = document.getElementById(
+  "vertretungsplan-trigger"
+);
+const vertretungsplanIframe = document.getElementById("vertretungsplan-iframe");
+const vertretungsplanBack = document.getElementById("vertretungsplan-back");
+
+registerExternalSite(
+  vertretungsplanTrigger,
+  viewVertretungsplan,
+  vertretungsplanIframe,
+  vertretungsplanBack,
+  "https://kephiso.webuntis.com/WebUntis/monitor?school=reformschule-kassel&monitorType=subst&format=Vertretung"
+);
+
+const speiseplanTrigger = document.getElementById("speiseplan-trigger");
+const speiseplanIframe = document.getElementById("speiseplan-iframe");
+const speiseplanBack = document.getElementById("speiseplan-back");
+
+// https://stackoverflow.com/a/6117889
+const isoWeekOfYear = (date) => {
+  const d = new Date(
+    Date.UTC(date.getFullYear(), date.getMonth(), date.getDate())
+  );
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
+};
+
+registerExternalSite(
+  speiseplanTrigger,
+  viewSpeiseplan,
+  speiseplanIframe,
+  speiseplanBack,
+  `https://www.biond.de/sp/reformschule/Reformschule,%20${isoWeekOfYear(
+    new Date()
+  )}.%20KW.pdf`
+);

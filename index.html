@@ -20,9 +20,16 @@
       <p>The best app in the world!</p>
       <p>
         For more information, use
-        <a href="https://deepl.com/translator" target="_blank"
+        <a class="link" href="https://deepl.com/translator" target="_blank"
           >DeepL Translator</a
         >.
+      </p>
+      <p>
+        <button id="vertretungsplan-trigger" class="link">
+          Vertretungsplan
+        </button>
+        ·
+        <button id="speiseplan-trigger" class="link">Speiseplan</button>
       </p>
     </main>
 
@@ -34,15 +41,20 @@
           <p>
             Dieses Audio enthält einen Auszug aus
             <a
+              class="link"
               href="https://musescore.com/user/28857438/scores/5112198"
               target="_blank"
               >einer MuseScore-Partitur</a
             >
             von
-            <a href="https://musescore.com/punctuationless" target="_blank"
+            <a
+              class="link"
+              href="https://musescore.com/punctuationless"
+              target="_blank"
               >punctuationless</a
             >, die unter der
             <a
+              class="link"
               href="https://creativecommons.org/licenses/by/4.0/"
               target="_blank"
               >CC BY 4.0</a
@@ -56,8 +68,20 @@
     <main id="view-cashewkern-1" style="display: none"></main>
 
     <main id="view-cashewkern-2" style="display: none">
-      <button id="cashewkern-yes">Ja, bin ich.</button>
-      <button id="cashewkern-no">Nein, bin ich nicht.</button>
+      <button id="cashewkern-yes" class="button">Ja, bin ich.</button>
+      <button id="cashewkern-no" class="button">Nein, bin ich nicht.</button>
+    </main>
+
+    <main id="view-vertretungsplan" style="display: none">
+      <button id="vertretungsplan-back" class="button">
+        Zurück zur Startseite
+      </button>
+      <iframe id="vertretungsplan-iframe"></iframe>
+    </main>
+
+    <main id="view-speiseplan" style="display: none">
+      <button id="speiseplan-back" class="button">Zurück zur Startseite</button>
+      <iframe id="speiseplan-iframe"></iframe>
     </main>
   </body>
 </html>

@@ -118,17 +118,19 @@ cashewkernNo.addEventListener("click", () => {
   cashewkernNoAudio.play();
 });
 
-const registerExternalSite = (trigger, view, iframe, back, url) => {
-  trigger.addEventListener("click", () => {
+const registerExternalSite = (config) => {
+  config.trigger.addEventListener("click", () => {
     if (activeView !== viewInnocuous) return;
-    changeView(view);
-    iframe.src = url();
+    changeView(config.view);
+    config.iframe.src = config.url();
+    if (config.onOpen) config.onOpen();
   });
 
-  back.addEventListener("click", () => {
-    if (activeView !== view) return;
+  config.back.addEventListener("click", () => {
+    if (activeView !== config.view) return;
     changeView(viewInnocuous);
-    iframe.src = "";
+    config.iframe.src = "";
+    if (config.onClose) config.onClose();
   });
 };
 
@@ -137,15 +139,39 @@ const vertretungsplanTrigger = document.getElementById(
 );
 const vertretungsplanIframe = document.getElementById("vertretungsplan-iframe");
 const vertretungsplanBack = document.getElementById("vertretungsplan-back");
+const vertretungsplanURL =
+  "https://kephiso.webuntis.com/WebUntis/monitor?school=reformschule-kassel&monitorType=subst&format=Vertretung";
 
-registerExternalSite(
-  vertretungsplanTrigger,
-  viewVertretungsplan,
-  vertretungsplanIframe,
-  vertretungsplanBack,
-  () =>
-    "https://kephiso.webuntis.com/WebUntis/monitor?school=reformschule-kassel&monitorType=subst&format=Vertretung"
-);
+let timeoutID;
+let initialCallOvercome;
+
+const observer = new ResizeObserver(() => {
+  if (!initialCallOvercome) {
+    initialCallOvercome = true;
+    return;
+  }
+
+  clearTimeout(timeoutID);
+  timeoutID = setTimeout(() => {
+    vertretungsplanIframe.src = vertretungsplanURL;
+  }, 250);
+});
+
+registerExternalSite({
+  trigger: vertretungsplanTrigger,
+  view: viewVertretungsplan,
+  iframe: vertretungsplanIframe,
+  back: vertretungsplanBack,
+  url: () => vertretungsplanURL,
+  onOpen: () => {
+    initialCallOvercome = false;
+    observer.observe(vertretungsplanIframe);
+  },
+  onClose: () => {
+    observer.disconnect();
+    clearTimeout(timeoutID);
+  },
+});
 
 const speiseplanTrigger = document.getElementById("speiseplan-trigger");
 const speiseplanIframe = document.getElementById("speiseplan-iframe");
@@ -162,13 +188,13 @@ const isoWeekOfYear = (date) => {
   return Math.ceil(((d - yearStart) / 86400000 + 1) / 7);
 };
 
-registerExternalSite(
-  speiseplanTrigger,
-  viewSpeiseplan,
-  speiseplanIframe,
-  speiseplanBack,
-  () =>
+registerExternalSite({
+  trigger: speiseplanTrigger,
+  view: viewSpeiseplan,
+  iframe: speiseplanIframe,
+  back: speiseplanBack,
+  url: () =>
     `https://www.biond.de/sp/reformschule/Reformschule,%20${isoWeekOfYear(
       new Date()
-    )}.%20KW.pdf`
-);
+    )}.%20KW.pdf`,
+});

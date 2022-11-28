@@ -1,0 +1,81 @@
+/*!
+ * three-dots - v0.2.3
+ * CSS loading animations made with single element
+ * https://nzbin.github.io/three-dots/
+ *
+ * Copyright (c) 2018 nzbin
+ * Released under MIT License
+ *
+ * This version of three-dots was modified for Photon.
+ */
+
+.dot-bricks {
+  --dot-color: #a78bfa;
+
+  position: relative;
+  top: 8px;
+  left: -9999px;
+  width: 10px;
+  height: 10px;
+  border-radius: 5px;
+  background-color: var(--dot-color);
+  color: var(--dot-color);
+  box-shadow: 9991px -16px 0 0 var(--dot-color), 9991px 0 0 0,
+    10007px 0 0 0 var(--dot-color);
+  animation: dot-bricks 2s infinite ease;
+}
+
+@keyframes dot-bricks {
+  0% {
+    box-shadow: 9991px -16px 0 0 var(--dot-color), 9991px 0 0 0 var(--dot-color),
+      10007px 0 0 0 var(--dot-color);
+  }
+  8.333% {
+    box-shadow: 10007px -16px 0 0 var(--dot-color),
+      9991px 0 0 0 var(--dot-color), 10007px 0 0 0 var(--dot-color);
+  }
+  16.667% {
+    box-shadow: 10007px -16px 0 0 var(--dot-color),
+      9991px -16px 0 0 var(--dot-color), 10007px 0 0 0 var(--dot-color);
+  }
+  25% {
+    box-shadow: 10007px -16px 0 0 var(--dot-color),
+      9991px -16px 0 0 var(--dot-color), 9991px 0 0 0 var(--dot-color);
+  }
+  33.333% {
+    box-shadow: 10007px 0 0 0 var(--dot-color),
+      9991px -16px 0 0 var(--dot-color), 9991px 0 0 0 var(--dot-color);
+  }
+  41.667% {
+    box-shadow: 10007px 0 0 0 var(--dot-color),
+      10007px -16px 0 0 var(--dot-color), 9991px 0 0 0 var(--dot-color);
+  }
+  50% {
+    box-shadow: 10007px 0 0 0 var(--dot-color),
+      10007px -16px 0 0 var(--dot-color), 9991px -16px 0 0 var(--dot-color);
+  }
+  58.333% {
+    box-shadow: 9991px 0 0 0 var(--dot-color),
+      10007px -16px 0 0 var(--dot-color), 9991px -16px 0 0 var(--dot-color);
+  }
+  66.666% {
+    box-shadow: 9991px 0 0 0 var(--dot-color), 10007px 0 0 0 var(--dot-color),
+      9991px -16px 0 0 var(--dot-color);
+  }
+  75% {
+    box-shadow: 9991px 0 0 0 var(--dot-color), 10007px 0 0 0 var(--dot-color),
+      10007px -16px 0 0 var(--dot-color);
+  }
+  83.333% {
+    box-shadow: 9991px -16px 0 0 var(--dot-color),
+      10007px 0 0 0 var(--dot-color), 10007px -16px 0 0 var(--dot-color);
+  }
+  91.667% {
+    box-shadow: 9991px -16px 0 0 var(--dot-color), 9991px 0 0 0 var(--dot-color),
+      10007px -16px 0 0 var(--dot-color);
+  }
+  100% {
+    box-shadow: 9991px -16px 0 0 var(--dot-color), 9991px 0 0 0 var(--dot-color),
+      10007px 0 0 0 var(--dot-color);
+  }
+}

@@ -20,7 +20,10 @@
       <p>The best app in the world!</p>
       <p>
         For more information, use
-        <a class="link" href="https://deepl.com/translator" target="_blank"
+        <a
+          class="link"
+          href="https://www.deepl.com/translator#en/de/The%20best%20app%20in%20the%20world!"
+          target="_blank"
           >DeepL Translator</a
         >.
       </p>
@@ -76,7 +79,15 @@
       <button id="vertretungsplan-back" class="button">
         Zurück zur Startseite
       </button>
-      <iframe id="vertretungsplan-iframe"></iframe>
+      <div id="vertretungsplan-loading">
+        <div class="dot-bricks"></div>
+      </div>
+      <div id="vertretungsplan-loading-text">
+        <div id="vertretungsplan-loading-text-inner">Gib niemals auf!</div>
+      </div>
+      <div id="vertretungsplan-iframe-wrapper">
+        <iframe id="vertretungsplan-iframe"></iframe>
+      </div>
     </main>
 
     <main id="view-speiseplan" style="display: none">

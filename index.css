@@ -98,14 +98,16 @@ h1 {
   z-index: 10;
 }
 
-#vertretungsplan-loading {
+#vertretungsplan-loading,
+#speiseplan-loading {
   position: absolute;
   left: 50%;
   top: 50%;
   transform: translate(-50%, -50%);
 }
 
-#vertretungsplan-loading-text {
+#vertretungsplan-loading-text,
+#speiseplan-loading-text {
   position: absolute;
   left: 0;
   right: 0;
@@ -114,7 +116,8 @@ h1 {
   display: flex;
 }
 
-#vertretungsplan-loading-text-inner {
+#vertretungsplan-loading-text-inner,
+#speiseplan-loading-text-inner {
   margin: 0 auto;
   padding: 2rem;
 }
@@ -138,4 +141,8 @@ h1 {
   border: 3px solid black; /* matches the border in the middle of the iframe */
   min-width: 1504px; /* 16:9 */
   min-height: 846px;
+}
+
+#speiseplan-iframe {
+  position: relative;
 }

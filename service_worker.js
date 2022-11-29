@@ -1,18 +1,16 @@
-// 3
-// This isn't byte-equal.
+const currentCacheName = "v2";
 
 self.addEventListener("install", (e) => {
   console.log("[sw] installing");
-  self.skipWaiting();
   e.waitUntil(
     (async () => {
-      const cache = await caches.open("v1");
-      await cache.addAll([
+      const cache = await caches.open(currentCacheName);
+      return cache.addAll([
         ".",
         "./app.webmanifest",
-        "./assets/cashewkern_intro.wav",
-        "./assets/cashewkern_no.wav",
-        "./assets/cashewkern_yes.wav",
+        "./assets/cashewkern_intro.flac",
+        "./assets/cashewkern_no.flac",
+        "./assets/cashewkern_yes.flac",
         "./assets/cashewkerne.jpg",
         "./assets/icon/icon.png",
         "./assets/icon/icon.svg",
@@ -29,6 +27,16 @@ self.addEventListener("install", (e) => {
 
 self.addEventListener("activate", (e) => {
   console.log("[sw] activating");
+  e.waitUntil(
+    (async () => {
+      const names = await caches.keys();
+      for (const name of names) {
+        if (name !== currentCacheName) {
+          caches.delete(name);
+        }
+      }
+    })()
+  );
 });
 
 self.addEventListener("fetch", (e) => {

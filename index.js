@@ -69,9 +69,9 @@ const cashewkernTrigger = document.getElementById("cashewkern-trigger");
 const cashewkernYes = document.getElementById("cashewkern-yes");
 const cashewkernNo = document.getElementById("cashewkern-no");
 
-const cashewkernIntroAudio = new Audio("./assets/cashewkern_intro.wav");
-const cashewkernYesAudio = new Audio("./assets/cashewkern_yes.wav");
-const cashewkernNoAudio = new Audio("./assets/cashewkern_no.wav");
+const cashewkernIntroAudio = new Audio("./assets/cashewkern_intro.flac");
+const cashewkernYesAudio = new Audio("./assets/cashewkern_yes.flac");
+const cashewkernNoAudio = new Audio("./assets/cashewkern_no.flac");
 
 cashewkernTrigger.addEventListener("click", () => {
   if (activeView !== viewInnocuous) return;

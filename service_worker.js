@@ -1,4 +1,4 @@
-const currentCacheName = "v2";
+const currentCacheName = "v3";
 
 self.addEventListener("install", (e) => {
   console.log("[sw] installing");
@@ -20,6 +20,7 @@ self.addEventListener("install", (e) => {
         "./index.css",
         "./index.html",
         "./index.js",
+        "./three-dots.css",
       ]);
     })()
   );

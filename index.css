@@ -38,6 +38,7 @@ h1 {
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
+  user-select: auto;
 
   color: #3b82f6;
   text-decoration: underline;
@@ -45,12 +46,21 @@ h1 {
 }
 
 .button {
+  /* builds on the browser's built-in button style */
   display: block;
   padding: 0.5rem 1rem;
   font-family: inherit;
   font-size: inherit;
   font-weight: inherit;
 }
+
+/* view-innocuous */
+
+#view-innocuous {
+  max-width: 33rem;
+}
+
+/* view-secret */
 
 #view-secret {
   min-width: 0;
@@ -74,6 +84,8 @@ h1 {
   padding: 2rem;
 }
 
+/* view-cashewkern-2 */
+
 #view-cashewkern-2 {
   /* applied by JavaScript */
   /* display: flex; */
@@ -81,6 +93,9 @@ h1 {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+/* view-vertretungsplan */
+/* view-speiseplan */
 
 #view-vertretungsplan,
 #view-speiseplan {

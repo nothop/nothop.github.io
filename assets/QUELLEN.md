@@ -44,8 +44,22 @@ Erstellt mit „Narakeet“ unter https://www.narakeet.com/app/text-to-audio/.
 
 Language: German – Standard  
 Voice: Hans  
-Script:
+Script: 🡇 siehe unten 🡇
 
-- Sind Sie ein Cashewkern?
-- Danke für Ihre Ehrlichkeit.
-- Es tut mir leid, aber das glaube ich Ihnen nicht.
+cashewkern_intro.flac
+
+```
+Sind Sie ein Cashewkern?
+```
+
+cashewkern_yes.flac
+
+```
+Danke für Ihre Ehrlichkeit.
+```
+
+cashewkern_no.flac
+
+```
+Es tut mir leid, aber das glaube ich Ihnen nicht.
+```

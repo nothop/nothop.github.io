@@ -38,42 +38,14 @@ https://pixabay.com/photos/nuts-food-cashew-nuts-3841542/
 
 Mit Exiftool Metadaten entfernt.
 
-## cashewkern_intro.wav
+## cashewkern_intro.flac, cashewkern_yes.flac, cashewkern_no.flac
 
-```
-espeak-ng -v German 'Sind Sie ein Cashewkern?'
-```
+Erstellt mit „Narakeet“ unter https://www.narakeet.com/app/text-to-audio/.
 
-Mit Audacity: "Cashew" durch "Cashew" aus
+Language: German – Standard  
+Voice: Hans  
+Script:
 
-```
-espeak-ng 'Cashew'
-```
-
-und "kern" durch "Kern" aus
-
-```
-espeak-ng -v German 'Sind Sie ein Kern?'
-```
-
-ersetzt.
-
-## cashewkern_yes.wav
-
-Ursprünglich:
-
-```
-espeak-ng -v German 'Danke für Ihre Ehrlichkeit.'
-```
-
-Gegenwärtig:
-
-```
-espeak-ng -v German -s 150 'Danke für Ihre Err lich keit.'
-```
-
-## cashewkern_no.wav
-
-```
-espeak-ng -v German 'Es tut mir leid, aber das glaube ich Ihnen nicht.'
-```
+- Sind Sie ein Cashewkern?
+- Danke für Ihre Ehrlichkeit.
+- Es tut mir leid, aber das glaube ich Ihnen nicht.

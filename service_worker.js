@@ -31,11 +31,11 @@ self.addEventListener("activate", (e) => {
   e.waitUntil(
     (async () => {
       const names = await caches.keys();
-      for (const name of names) {
-        if (name !== currentCacheName) {
-          caches.delete(name);
-        }
-      }
+      return Promise.all(
+        names.map((name) =>
+          name !== currentCacheName ? caches.delete(name) : undefined
+        )
+      );
     })()
   );
 });
@@ -43,14 +43,14 @@ self.addEventListener("activate", (e) => {
 self.addEventListener("fetch", (e) => {
   e.respondWith(
     (async () => {
-      const cached = await caches.match(e.request);
-      if (cached) {
+      const cache = await caches.open(currentCacheName);
+      const cachedResponse = await cache.match(e.request);
+      if (cachedResponse) {
         console.log(`[sw] ${e.request.url}: returning from cache`);
-        return cached;
-      } else {
-        console.log(`[sw] ${e.request.url}: not cached, fetching`);
-        return fetch(e.request);
+        return cachedResponse;
       }
+      console.log(`[sw] ${e.request.url}: not cached, fetching`);
+      return fetch(e.request);
     })()
   );
 });

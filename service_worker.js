@@ -1,4 +1,4 @@
-const currentCacheName = "v3";
+const currentCacheName = "v4";
 
 self.addEventListener("install", (e) => {
   console.log("[sw] installing");

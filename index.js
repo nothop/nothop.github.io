@@ -196,5 +196,5 @@ registerExternalSite({
   url: () =>
     `https://www.biond.de/sp/reformschule/Reformschule,%20${isoWeekOfYear(
       new Date()
-    )}.%20KW.pdf`,
+    )}.%20KW%20${new Date().getFullYear()}.pdf`,
 });

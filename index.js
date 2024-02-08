@@ -193,8 +193,10 @@ registerExternalSite({
   view: viewSpeiseplan,
   iframe: speiseplanIframe,
   back: speiseplanBack,
-  url: () =>
-    `https://www.biond.de/sp/reformschule/Reformschule,%20${isoWeekOfYear(
-      new Date()
-    )}.%20KW%20${new Date().getFullYear()}.pdf`,
+  url: () => {
+    const y = new Date().getFullYear().toString();
+    const m = (new Date().getMonth() + 1).toString().padStart(2, '0');
+    const w = isoWeekOfYear(new Date()).toString();
+    return `https://biond.de/wp-content/uploads/${y}/${m}/Reformschule-${w}.-KW-${y}.pdf`;
+  },
 });
